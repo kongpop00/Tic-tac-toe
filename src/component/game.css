@@ -1,0 +1,47 @@
+.box{
+    border : silver solid 2px;
+    border-radius : 20px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+   
+    position: relative;
+    background-color: rgb(11, 15, 22);
+    
+}
+
+.text{
+ position: absolute;
+ color : white;
+ font-size: 200px;
+
+
+} 
+.textX {
+    color: rgb(241, 241, 241);
+    text-shadow: 
+    0 0 5px rgb(0, 217, 255),
+    0 0 10px rgb(0, 217, 255),
+    0 0 20px rgb(0, 217, 255),
+    0 0 40px rgb(0, 217, 255),
+    0 0 80px rgb(0, 217, 255),
+    0 0 100px rgb(0, 217, 255);
+}
+.textO{
+    color:rgb(238, 238, 238);
+    text-shadow: 
+    0 0 5px rgb(225, 29, 231),
+    0 0 10px rgb(225, 29, 231),
+    0 0 20px rgb(225, 29, 231),
+    0 0 40px rgb(225, 29, 231),
+    0 0 80px rgb(225, 29, 231),
+    0 0 100px rgb(225, 29, 231);
+    
+}
+@media screen and (max-width: 600px){
+    .text{
+        
+        font-size: 100px;
+    }
+}
