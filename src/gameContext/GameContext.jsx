@@ -5,6 +5,8 @@ import {
   useEffect,
   useState,
 } from "react";
+import { usefilterconditionWinContext } from "./filterConditionWinGame";
+
 
 const GameContext = createContext();
 
@@ -13,8 +15,13 @@ export function useGameContext() {
 }
 
 export function GameProvider({ children }) {
+  
+
   const [data, setData] = useState(Array(9).fill("")); // เก็บ box ไว้ป็น Array 9 ช่อง  ''
   const [current, setCurrent] = useState("X"); // ค่า แรก ที่กดลงไปใน box
+ 
+
+  
   // draw รับ index จาก การกด ของ box
   const Draw = (index) => {
     if (data[index] === "") {
@@ -95,12 +102,14 @@ export function GameProvider({ children }) {
     });
     return GameWin;
   };
-
+ 
   return (
     <GameContext.Provider
       value={{
         Draw,
         data,
+        
+       
       }}
     >
       {children}

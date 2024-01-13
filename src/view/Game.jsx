@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../component/game.css'
 import { useGameContext } from '../gameContext/GameContext'
 
 const Game = () => {
 
-    const {Draw, data} = useGameContext()
+    const {Draw, data,conditionWin} = useGameContext()
     const textX = 'textX'
     const textO = 'textO'
+
+    
+      
+  
   return (
     <div className='bg-[url(public/bg-game.png)] w-full h-[100vh] flex flex-col items-center justify-center md:justify-start bg-center bg-cover '>
         <div className='max-w-7xl w-[350px] h-[350px] md:w-[750px] md:h-[750px] mt-[40px] grid grid-cols-3 gap-3'>
