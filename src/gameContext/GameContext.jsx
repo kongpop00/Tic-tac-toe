@@ -16,8 +16,8 @@ export function useGameContext() {
 
 export function GameProvider({ children }) {
   
-
-  const [data, setData] = useState(Array(9).fill("")); // เก็บ box ไว้ป็น Array 9 ช่อง  ''
+ const {conditionWin, times,condition}=usefilterconditionWinContext()
+  const [data, setData] = useState(Array(0).fill("")); // เก็บ box ไว้ป็น Array 9 ช่อง  ''
   const [current, setCurrent] = useState("X"); // ค่า แรก ที่กดลงไปใน box
  
 
@@ -73,8 +73,10 @@ export function GameProvider({ children }) {
   {
     /**checkwin */
   }
-  const CheckWin = (borad) => {
-    const condition = [
+  const CheckWin = (borad ) => {
+    condition()
+    console.log('condition',conditionWin);
+    /*const condition = 
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8],
@@ -83,10 +85,14 @@ export function GameProvider({ children }) {
       [2, 5, 8],
       [0, 4, 8],
       [2, 4, 6],
+     
     ];
+    */
+   
+    
     let GameWin = false;
 
-    condition.forEach((element) => {
+    conditionWin.forEach((element) => {
       if (
         borad[element[0]] !== "" &&
         borad[element[1]] !== "" &&
@@ -102,13 +108,14 @@ export function GameProvider({ children }) {
     });
     return GameWin;
   };
- 
+
+
   return (
     <GameContext.Provider
       value={{
         Draw,
         data,
-        
+        setData
        
       }}
     >

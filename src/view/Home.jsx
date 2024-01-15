@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Showboard from "../component/Showboard";
 
-const Home = () => {
+const Home = ({setTimes}) => {
 useEffect(()=>{
   
  },[])
@@ -11,7 +11,7 @@ useEffect(()=>{
     <div className="bg-[url(public/bghome.png)] w-fuul h-[100vh] bg-cover bg-center">
       <div className="max-w-7xl m-auto h-[100vh] p-[50px] flex flex-col items-center">
         <h1 className=" text-[50px] sm:text-[70px] md:text-[80px] lg:text-[100px] font-[500] text-white">Tic-Tac-Toe</h1>
-        <Showboard/>
+        <Showboard setTimes={setTimes}/>
 
         {/*Button1*/}
         <div className="bg-slate-500 flex flex-col md:flex-row w-[100%] items-center justify-center gap-3">

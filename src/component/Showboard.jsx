@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./game.css";
 import { usefilterconditionWinContext } from "../gameContext/filterConditionWinGame";
+import { useGameContext } from "../gameContext/GameContext";
 
 
 const Showboard = () => {
-const { setTimes}=usefilterconditionWinContext()
+const {  setTimes,setDataIndex}=usefilterconditionWinContext()
+const{setData}=useGameContext()
 
   const [inbox] = useState(Array(9).fill(""));
 
@@ -19,14 +21,18 @@ const { setTimes}=usefilterconditionWinContext()
     { id: 8, box: "10 X 10 ", borad: 10 },
   ];
 
-  
- 
+   const handlegetscope =(borad)=>{
+      setTimes(borad)
+      setDataIndex(Array(borad**2).fill(0))
+      setData(Array(borad**2).fill(""))
+   }
+
   return (
     <div className="lg:w-[1000px] lg:h-[500px] grid grid-cols-4  gap-5 my-[50px] ">
       {box.map((e) => {
         return (
           <button
-            onClick={()=>setTimes(5)}
+            onClick={()=>handlegetscope(e.borad)}
             key={e.id}
             className={`box-1  border-[#26242ce8] border-[2px] text-[#6c667ce8]  bg-[#000000] justify-center relative items-center flex  rounded-[20px] hover:scale-125  `}
           >
@@ -44,8 +50,10 @@ const { setTimes}=usefilterconditionWinContext()
               })}
             </div>
           </button>
+
         );
       })}
+        
     </div>
   );
 };

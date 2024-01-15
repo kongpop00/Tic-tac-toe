@@ -6,7 +6,9 @@ import { GameProvider } from "./gameContext/GameContext";
 import { FilterconditionWinProvider } from "./gameContext/filterConditionWinGame";
 
 function App() {
+
   return (
+
     <FilterconditionWinProvider>
       <GameProvider>
         <Routes>
@@ -14,7 +16,7 @@ function App() {
           <Route path="/game" element={<Game />} />
         </Routes>
       </GameProvider>
-      </FilterconditionWinProvider>
+      </FilterconditionWinProvider >
   );
 }
 
