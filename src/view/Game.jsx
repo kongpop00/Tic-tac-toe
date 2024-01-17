@@ -5,8 +5,8 @@ import { usefilterconditionWinContext } from '../gameContext/filterConditionWinG
 
 const Game = () => {
 
-    const {Draw, data} = useGameContext()
-    const {times}=usefilterconditionWinContext()
+    const {Draw ,data} = useGameContext()
+    const {times }=usefilterconditionWinContext()
     const textX = 'textX'
     const textO = 'textO'
     

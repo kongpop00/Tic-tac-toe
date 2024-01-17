@@ -7,7 +7,6 @@ import {
 } from "react";
 import { usefilterconditionWinContext } from "./filterConditionWinGame";
 
-
 const GameContext = createContext();
 
 export function useGameContext() {
@@ -15,13 +14,11 @@ export function useGameContext() {
 }
 
 export function GameProvider({ children }) {
-  
- const {conditionWin, times,condition}=usefilterconditionWinContext()
+  const { conditionWin, times, condition } = usefilterconditionWinContext();
   const [data, setData] = useState(Array(0).fill("")); // เก็บ box ไว้ป็น Array 9 ช่อง  ''
   const [current, setCurrent] = useState("X"); // ค่า แรก ที่กดลงไปใน box
- 
+  const [kong ,setkong]=useState([])
 
-  
   // draw รับ index จาก การกด ของ box
   const Draw = (index) => {
     if (data[index] === "") {
@@ -45,7 +42,6 @@ export function GameProvider({ children }) {
       }
       if (CheckTie(borad)) {
         alert("tie game");
-        
       }
     }
   };
@@ -62,7 +58,7 @@ export function GameProvider({ children }) {
         count++;
       }
     });
-    console.log('cout',count);
+    console.log("cout", count);
     if (count >= 9) {
       return true;
     } else {
@@ -73,9 +69,10 @@ export function GameProvider({ children }) {
   {
     /**checkwin */
   }
-  const CheckWin = (borad ) => {
-    condition()
-    console.log('condition',conditionWin);
+  const CheckWin = (borad) => {
+    console.log('borad',borad);
+    condition();
+    console.log("condition", conditionWin);
     /*const condition = 
       [0, 1, 2],
       [3, 4, 5],
@@ -88,35 +85,91 @@ export function GameProvider({ children }) {
      
     ];
     */
-   
-    
+
     let GameWin = false;
 
+  function isBigEnough(element, index, array) {
+    if(current =="X"){
+      return element =="X"
+    }if(current =="O"){
+      return element=="O"
+    }
+    }
+    
+  const flat = conditionWin.flat()
+  let startFlat = 0;
+  let endFlat = times
+ let  array = []
+
+  for(let i = 0; i< conditionWin.length; i++){
+   // console.log('i',i);
+   console.log('flat',flat);
+    const t = flat.slice(startFlat,endFlat)// 0-3 4
+    console.log('borad==t',borad[t]);
+        console.log('ttttt',t);
+        let array1 =[]
+         t.map((call)=>{
+            console.log('============',borad[call]);
+            // array = array.push(borad[call]);
+            array1.push(borad[call])
+
+          })
+    console.log('araay1111',array1);
+    
+    startFlat =  startFlat+times;
+    //console.log('start',startFlat);
+    endFlat =  endFlat+times
+    //console.log('end',endFlat);
+    const k =  array1.every(isBigEnough)
+    console.log('k',k);
+    if( k ==true && current=="X"){
+      alert('XXXXXXXXXXXXXXXXX')
+    }if(k== true && current=="O"){
+      alert('OOOOOOOOOOOOOOOOOOOO')
+    }
+
+  }
+ 
+
+   /*conditionWin.map((e)=>{
+    
+     
+      console.log('e',e);
+
+
+    if (borad[e [0]] !== "" && borad[e[1]]!=="" && borad[e[2]] !==""){
+     
+      if( borad[e[0]] ==borad[e[1]] && borad[e[1]]==borad[e[2]]){
+        alert('ddddddddddddddddddddddddddddddddddd')
+      }
+    }
+     
+   })
+
+
+*/
+
     conditionWin.forEach((element) => {
-      if (
-        borad[element[0]] !== "" &&
-        borad[element[1]] !== "" &&
-        borad[element[2]] !== ""
-      ) {
+     
+    /*  if (borad[element[1]] !== "" && borad[element[2]] !== "") {
+        console.log("hay =================================");
         if (
           borad[element[0]] === borad[element[1]] &&
           borad[element[1]] === borad[element[2]]
         ) {
           GameWin = true;
         }
-      }
+      }*/
     });
     return GameWin;
   };
-
 
   return (
     <GameContext.Provider
       value={{
         Draw,
         data,
-        setData
-       
+        setData,
       }}
     >
       {children}

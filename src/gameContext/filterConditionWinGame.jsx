@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 
+
 const filterconditionWin = createContext();
 
 export function usefilterconditionWinContext() {
@@ -14,6 +15,7 @@ export function usefilterconditionWinContext() {
 
 export function FilterconditionWinProvider({ children }) {
   const [times, setTimes] = useState(0);
+
   const [dataindex, setDataIndex] = useState(Array(times**2).fill(0));
   const [conditionWin, setConditionWin] = useState([]);
   const [checkcosRight ,setCheckCosRight]=useState([])
@@ -43,7 +45,13 @@ export function FilterconditionWinProvider({ children }) {
     // o-3 , 3-6 , 6-9
     firtsRow = Number(lengthRow.slice(-1)) + 1; // 2+1==3WWW
     endRow += times; //3+3
+    console.log('lengrow',typeof lengthRow);
+    lengthRow.map((e)=>{
+
+      
+    })
     setConditionWin(Array.from(conditionWin.push(lengthRow)));
+
   };
 
   const column = (j) => {
