@@ -2,21 +2,25 @@ import React, { useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import Showboard from "../component/Showboard";
-
+import "../component/game.css";
 const Home = ({setTimes}) => {
-useEffect(()=>{
+ 
+  const color = 'boxindex'
+  const box = 'box2'
+  const hov = 'box3'
   
- },[])
   return (
     <div className="bg-[url(public/bghome.png)] w-fuul h-[100vh] bg-cover bg-center">
       <div className="max-w-7xl m-auto h-[100vh] p-[50px] flex flex-col items-center">
-        <h1 className=" text-[50px] sm:text-[70px] md:text-[80px] lg:text-[100px] font-[500] text-white">Tic-Tac-Toe</h1>
+        <h1 className={`${box} text-[50px] sm:text-[70px] md:text-[80px] lg:text-[120px] font-[500] text-white w-[100%] text-center`}>
+          Tic-Tac-Toe
+        </h1>
         <Showboard setTimes={setTimes}/>
 
         {/*Button1*/}
-        <div className="bg-slate-500 flex flex-col md:flex-row w-[100%] items-center justify-center gap-3">
+        <div className=" mt-[20px] flex flex-col md:flex-row w-[100%] items-center justify-center gap-20">
             <Link to={'/game'}>
-          <button className="bg-[#3747e5]  w-[250px] h-[60px] rounded-[20px] flex  items-center justify-around px-[40px]">
+          <button className={`${color} bg-[#1a0b2e] w-[250px] h-[60px] rounded-[20px] flex  items-center justify-around px-[40px] hover:scale-125 ${hov}`}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -49,7 +53,7 @@ useEffect(()=>{
           </button>
           </Link>
           {/*Button1*/}
-          <button className="bg-[#3747e5]  w-[250px] h-[60px] rounded-[20px]  flex  items-center justify-around  px-[40px]">
+          <button className={`${color} bg-[#1a0b2e]  w-[250px] h-[60px] rounded-[20px]  flex  items-center justify-around  px-[40px] hover:scale-125 ${hov}`}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

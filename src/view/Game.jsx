@@ -39,10 +39,10 @@ const Game = () => {
           */}
             </div>
         <div className='flex flex-col md:flex-row md:gap-[200px] lg:gap-[260px] '>
-        <div className='player player-1 w-[180px] border-2 mt-[20px] flex justify-center items-center font-[500] text-[25px] h-[50px] md:h-[60px] bg-sky-500 rounded-[20px] ' >
+        <div className='player player-1 w-[180px] border-2 mt-[20px] flex justify-center items-center font-[500] text-[25px] h-[50px] md:h-[60px] bg-[#121213] rounded-[20px] text-white' >
         Player 1 : X
         </div>
-        <div className='player playper-2 w-[180px] border-2 mt-[20px] flex justify-center items-center font-[500] text-[25px] h-[50px] md:h-[60px] bg-sky-500 rounded-[20px] '>
+        <div className='player playper-2 w-[180px] border-2 mt-[20px] flex justify-center items-center font-[500] text-[25px] h-[50px] md:h-[60px] bg-[#121213] rounded-[20px] text-white'>
         Player 2 : O
         </div>
         </div>

@@ -45,11 +45,8 @@ export function FilterconditionWinProvider({ children }) {
     // o-3 , 3-6 , 6-9
     firtsRow = Number(lengthRow.slice(-1)) + 1; // 2+1==3WWW
     endRow += times; //3+3
-    console.log('lengrow',typeof lengthRow);
-    lengthRow.map((e)=>{
-
-      
-    })
+   
+ 
     setConditionWin(Array.from(conditionWin.push(lengthRow)));
 
   };
