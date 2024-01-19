@@ -101,8 +101,9 @@ export function FilterconditionWinProvider({ children }) {
     calculate();
     cosRight();
     cosLfte()
+    
     //console.log('time',times);
-   // console.log("condirion", conditionWin);
+   console.log("condirion", conditionWin);
   }, [times]);
 
   return (

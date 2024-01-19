@@ -3,12 +3,13 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Showboard from "../component/Showboard";
 import "../component/game.css";
+import { useGameContext } from "../gameContext/GameContext";
 const Home = ({setTimes}) => {
  
   const color = 'boxindex'
   const box = 'box2'
   const hov = 'box3'
-  
+   const {setPlayer}=useGameContext()
   return (
     <div className="bg-[url(public/bghome.png)] w-fuul h-[100vh] bg-cover bg-center">
       <div className="max-w-7xl m-auto h-[100vh] p-[50px] flex flex-col items-center">
@@ -20,7 +21,10 @@ const Home = ({setTimes}) => {
         {/*Button1*/}
         <div className=" mt-[20px] flex flex-col md:flex-row w-[100%] items-center justify-center gap-20">
             <Link to={'/game'}>
-          <button className={`${color} bg-[#1a0b2e] w-[250px] h-[60px] rounded-[20px] flex  items-center justify-around px-[40px] hover:scale-125 ${hov}`}>
+          <button className={`${color} bg-[#1a0b2e] w-[250px] h-[60px] rounded-[20px] flex  items-center justify-around px-[40px] hover:scale-125 ${hov}`}
+            onClick={()=>setPlayer("botPlayer")}
+            
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -28,6 +32,7 @@ const Home = ({setTimes}) => {
               strokeWidth={1.5}
               stroke="currentColor"
               className="w-7 h-7 text-white"
+
             >
               <path
                 strokeLinecap="round"
@@ -51,9 +56,14 @@ const Home = ({setTimes}) => {
               />
             </svg>
           </button>
-          </Link>
+          </Link >
           {/*Button1*/}
-          <button className={`${color} bg-[#1a0b2e]  w-[250px] h-[60px] rounded-[20px]  flex  items-center justify-around  px-[40px] hover:scale-125 ${hov}`}>
+
+          <Link to={'/game'}>
+          <button className={`${color} bg-[#1a0b2e]  w-[250px] h-[60px] rounded-[20px]  flex  items-center justify-around  px-[40px] hover:scale-125 ${hov}`}
+            onClick={()=>setPlayer("twoPlayer")}
+            
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -84,6 +94,7 @@ const Home = ({setTimes}) => {
               />
             </svg>
           </button>
+          </Link >
         </div>
       </div>
     </div>
