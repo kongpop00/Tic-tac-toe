@@ -6,9 +6,10 @@ import { useGameContext } from "../gameContext/GameContext";
 
 const Showboard = () => {
   const { setTimes, setDataIndex } = usefilterconditionWinContext();
-  const { setData } = useGameContext();
+  const { setData , } = useGameContext();
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [inbox] = useState(Array(9).fill(""));
+
 
 
  const boxindex = 'boxindex'
@@ -40,7 +41,9 @@ const Showboard = () => {
             key={e.id}
             className={`box-1  border-[#26242ce8] border-[2px] text-[#6c667ce8]  bg-[#030303c4] justify-center relative items-center flex  rounded-[20px] hover:scale-125 ${
               selectedIndex === index ? ` relative z-10 bg-[#130f20ef] text-white  ${boxindex} ` : ""
-            }`} // ${btnState.find((btn)=>btn == btnState[e.id]) ? btnactive :""}
+            }  `
+           
+          } 
           >
             <div className="absolute text-[40px] font-[500] rounded-lg  ">
               {e.box}

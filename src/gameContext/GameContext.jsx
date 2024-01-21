@@ -18,25 +18,22 @@ export function GameProvider({ children }) {
   const [data, setData] = useState(Array(0).fill("")); // เก็บ box ไว้ป็น Array 9 ช่อง  ''
   const [current, setCurrent] = useState("X"); // ค่า แรก ที่กดลงไปใน box
   const [player, setPlayer] = useState("");
-
-
+  const [warnBoard,setWarnBoard]=useState(false)
+  const [gameWinX , setGameWinX]=useState(false)
+  const [gameWinO , setGameWinO]=useState(false)
   // draw รับ index จาก การกด ของ box
 
   const Draw = (index) => {
-
     if (data[index] === "") {
       console.log("box", index);
       const borad = data;
       borad[index] = current; // ให้ index ที่กด ครั้งแรก เป็น X ["", "x "]
-      
+
       console.log("borad", borad);
       setData(borad);
       console.log("data", data);
-     
-    
-      if(player=="twoPlayer"){
 
-   
+      if (player == "twoPlayer") {
         console.log("player", player);
         if (current === "X") {
           setCurrent("O");
@@ -44,13 +41,10 @@ export function GameProvider({ children }) {
           setCurrent("X");
         }
         CheckWin(borad);
-       CheckTie(borad);
- 
-
-   
-      }else{
+        CheckTie(borad);
+      } else {
         console.log("player", player);
-        
+
         const random = RandomDraw(times);
         console.log("random ", random);
         if (borad[random] == "") {
@@ -61,32 +55,25 @@ export function GameProvider({ children }) {
           borad.fill("O", found, found + 1);
         }
         CheckWin(borad);
-       CheckTie(borad);
-      
+        CheckTie(borad);
       }
-    
     }
   };
-  
-  
+
   const CheckWin = (borad) => {
     console.log("borad", borad);
-    
+
     condition();
     //console.log('conditionwin =========',conditionWin);
-  
 
     function isAllX(element, index, array) {
-     return element =="X"
-     
+      return element == "X";
     }
     function isAllO(element, index, array) {
-      return element =="O"
-      
-     }
-     //element !=="X" && element !=="O"
-     
-    
+      return element == "O";
+    }
+    //element !=="X" && element !=="O"
+
     const flat = conditionWin.flat();
     let startFlat = 0;
     let endFlat = times;
@@ -110,34 +97,29 @@ export function GameProvider({ children }) {
       //console.log('end',endFlat);
       const everyconditionX = array1.every(isAllX);
       const everyconditionO = array1.every(isAllO);
-    
-  
-      if(everyconditionX){
-        alert('XXXXXXXXXXXXXXXXXXXXXXXXX')
-      }
-      if(everyconditionO){
 
-        alert('OOOOOOOOOOOOOOOOOOOO')
+      if (everyconditionX) {
+        setGameWinX(true)
+       alert("XXXXXXXXXXXXXXXXXXXXXXXXX");
       }
+      if (everyconditionO) {
+        setGameWinO(true)
       
-
+        alert("OOOOOOOOOOOOOOOOOOOO");
+      }
     }
   };
   const CheckTie = (borad) => {
-
     let count = 0;
     borad.forEach((element) => {
       if (element !== "") {
         count++;
       }
     });
-    if(count >= times ** 2 ){
-     
-        alert("tie========================");
-        console.log("=====================");
-    
+    if (count >= times ** 2) {
+      alert("tie========================");
+      console.log("=====================");
     }
-   
   };
 
   const RandomDraw = (times) => {
@@ -152,6 +134,10 @@ export function GameProvider({ children }) {
         data,
         setData,
         setPlayer,
+        setWarnBoard,
+        warnBoard,
+        gameWinO,
+        gameWinX
       }}
     >
       {children}
