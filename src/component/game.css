@@ -106,6 +106,20 @@
     0 0 20px rgb(114, 5, 238),
     0 0 100px rgb(114, 5, 238);
 }
+ .btnShowwin:hover {
+ text-shadow: 
+    0 0 5px rgb(225, 29, 231),
+    0 0 10px rgb(225, 29, 231),
+    0 0 20px rgb(225, 29, 231),
+    0 0 40px rgb(225, 29, 231),
+    0 0 80px rgb(225, 29, 231),
+    0 0 100px #e11de7;
+    box-shadow: 
+    0 0 5px rgb(255, 255, 255),
+    0 0 10px rgb(255, 255, 255),
+    0 0 20px rgb(114, 5, 238),
+    0 0 100px rgb(114, 5, 238);
+ }
 
 @media screen and (max-width: 600px){
     .text{

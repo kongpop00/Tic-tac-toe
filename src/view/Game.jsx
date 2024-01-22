@@ -2,20 +2,18 @@ import React, { useEffect, useState } from "react";
 import "../component/game.css";
 import { useGameContext } from "../gameContext/GameContext";
 import { usefilterconditionWinContext } from "../gameContext/filterConditionWinGame";
-import {  useNavigate } from "react-router-dom";
+import Showwin from "../component/Showwin";
+
+
 const Game = () => {
 
   
-  const { Draw, data ,gameWinX , gameWinO } = useGameContext();
+  const { Draw, data ,gameWinX , gameWinO ,handleBack ,gametie} = useGameContext();
   const { times } = usefilterconditionWinContext();
-  const [win , setwin]=useState(false)
-  const navigate = useNavigate();
-  const handleBack = ()=>{
-    navigate('/')
-    window.location.reload();
-  }
   
+
   
+
   const colorVariants = {
     3: "grid-cols-3",
     4: "grid-cols-4",
@@ -27,10 +25,12 @@ const Game = () => {
     10: "grid-cols-10",
   };
   useEffect(()=>{
-  
+   
    console.log('=========================gameX',gameWinX);
    console.log('=========================gameO',gameWinO);
- },[gameWinX,gameWinO])
+   console.log('data',data);
+  
+ },[gameWinX,gameWinO,data])
   return (
     <div className="bg-[url(public/bg-game.png)] w-full h-[100vh] flex flex-col items-center justify-center md:justify-start bg-center bg-cover ">
       <div
@@ -73,7 +73,17 @@ const Game = () => {
           />
         </svg>
       </button>
-      <div className="bg">kdsdsfks;lk</div>
+       
+     {gameWinO &&
+      <Showwin/>
+     }
+     {gameWinX && 
+     <Showwin/>
+    }
+   { gametie &&
+     <Showwin/>
+   }
+         
     </div>
   );
 };

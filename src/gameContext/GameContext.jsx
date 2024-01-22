@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import { usefilterconditionWinContext } from "./filterConditionWinGame";
+import { useNavigate } from "react-router-dom";
 
 const GameContext = createContext();
 
@@ -14,13 +15,14 @@ export function useGameContext() {
 }
 
 export function GameProvider({ children }) {
-  const { conditionWin, times, condition } = usefilterconditionWinContext();
+  const { conditionWin, times, condition ,setTimes } = usefilterconditionWinContext();
   const [data, setData] = useState(Array(0).fill("")); // เก็บ box ไว้ป็น Array 9 ช่อง  ''
   const [current, setCurrent] = useState("X"); // ค่า แรก ที่กดลงไปใน box
   const [player, setPlayer] = useState("");
   const [warnBoard,setWarnBoard]=useState(false)
   const [gameWinX , setGameWinX]=useState(false)
   const [gameWinO , setGameWinO]=useState(false)
+  const [gametie , setgameTie]=useState(false)
   // draw รับ index จาก การกด ของ box
 
   const Draw = (index) => {
@@ -100,12 +102,12 @@ export function GameProvider({ children }) {
 
       if (everyconditionX) {
         setGameWinX(true)
-       alert("XXXXXXXXXXXXXXXXXXXXXXXXX");
+      // alert("XXXXXXXXXXXXXXXXXXXXXXXXX");
       }
       if (everyconditionO) {
         setGameWinO(true)
       
-        alert("OOOOOOOOOOOOOOOOOOOO");
+      //  alert("OOOOOOOOOOOOOOOOOOOO");
       }
     }
   };
@@ -117,8 +119,10 @@ export function GameProvider({ children }) {
       }
     });
     if (count >= times ** 2) {
-      alert("tie========================");
+   
+     // alert("tie========================");
       console.log("=====================");
+      setgameTie(true)
     }
   };
 
@@ -126,7 +130,19 @@ export function GameProvider({ children }) {
     const time = times ** 2;
     return Math.floor(Math.random() * time);
   };
-
+  const navigate = useNavigate();
+  const handleBack = ()=>{
+    navigate('/')
+    window.location.reload();
+  }
+  
+ const handlePlayagain =()=>{
+     setData(Array(times**2).fill(""))
+     setCurrent("X")
+    setgameTie(false)
+     setGameWinO(false)
+     setGameWinX(false)
+ }
   return (
     <GameContext.Provider
       value={{
@@ -137,7 +153,11 @@ export function GameProvider({ children }) {
         setWarnBoard,
         warnBoard,
         gameWinO,
-        gameWinX
+        gameWinX,
+        handleBack,
+        handlePlayagain, 
+        player,
+        gametie
       }}
     >
       {children}
