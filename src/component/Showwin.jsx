@@ -6,12 +6,12 @@ const Showwin = () => {
     useGameContext();
 
   //const [textwin, setTextwin] = useState("");
- let gamestie = ""
+  let gamestie = "";
   let textwin = "";
 
-  if(gametie){
-    if(!gameWinO && !gameWinX){
-      gamestie = "tie"
+  if (gametie) {
+    if (!gameWinO && !gameWinX) {
+      gamestie = "tie";
     }
   }
 
@@ -22,7 +22,6 @@ const Showwin = () => {
     if (gameWinO) {
       textwin = "Player2 win OOOOOO";
     }
-   
   }
 
   if (player == "botPlayer") {
@@ -34,19 +33,16 @@ const Showwin = () => {
     }
   }
 
-   if(gamestie =="tie" ){
-   textwin ="tie====================="
+  if (gamestie == "tie") {
+    textwin = "tie=====================";
+  }
 
-   }
-
-  
   const stylebutton =
     "  text-[30px] w-[80%] h-[100%] bg-[#2b194d67] rounded-[14px] border-[1px]";
 
-
-     useEffect(()=>{
-       console.log('hellow ============game win gametie' , gametie)
-     },[])
+  useEffect(() => {
+    console.log("hellow ============game win gametie", gametie);
+  }, []);
   return (
     <div className="bg-[#000000ad] absolute w-[100%] h-[100%] top-0 flex z-40">
       <div className="bg-[#120c25cb] relative w-[40%] h-[40%] m-auto flex justify-center items-center">

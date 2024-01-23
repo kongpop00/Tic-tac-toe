@@ -11,7 +11,7 @@ const Home = ({setTimes}) => {
   const color = 'boxindex'
   const box = 'box2'
   const hov = 'box3'
-
+  const styleBtn = ' bg-[#1a0b2e] w-[200px] h-[50px] mt-[20px] lg:w-[250px] lg:h-[65px]  rounded-[20px] flex  items-center justify-around px-[40px] lg:px-0 hover:scale-125'
    const {setPlayer,setWarnBoard ,warnBoard}=useGameContext()
   const {times}=usefilterconditionWinContext()
   const navigate = useNavigate();
@@ -31,9 +31,9 @@ const Home = ({setTimes}) => {
       }
     }
   return (
-    <div className="bg-[url(public/bghome.png)] w-fuul h-[100vh] bg-cover bg-center">
-      <div className="max-w-7xl m-auto h-[100vh] p-[50px] flex flex-col items-center">
-        <h1 className={`${box} text-[50px] sm:text-[70px] md:text-[80px] lg:text-[120px] font-[500] text-white w-[100%] text-center`}>
+    <div className="bg-[url(public/bghome.png)] w-fuul h-[100%] bg-cover bg-center ">
+      <div className=" w-full m-auto h-[100vh] lg:p-[50px] flex flex-col items-center">
+        <h1 className={`${box} text-[50px] sm:text-[70px] md:text-[80px] lg:text-[100px] font-[500] text-white w-[100%] text-center mt-[70px] lg:mt-[10px] `}>
           Tic-Tac-Toe
         </h1>
         <Showboard setTimes={setTimes}/>
@@ -43,9 +43,9 @@ const Home = ({setTimes}) => {
         }
        
         {/*Button1*/}
-        <div className=" mt-[20px] flex flex-col md:flex-row w-[100%] items-center justify-center gap-20">
+        <div className=" mt-[20px] lg:mt-[30px] flex flex-col md:flex-row w-[100%] items-center justify-center gap-0 md:gap-10">
             
-          <button className={`${color} bg-[#1a0b2e] w-[250px] h-[60px] rounded-[20px] flex  items-center justify-around px-[40px] hover:scale-125 ${hov}`}
+          <button className={`${color} ${styleBtn} ${hov}`}
             onClick={handleBot}
             
           >
@@ -84,7 +84,7 @@ const Home = ({setTimes}) => {
           {/*Button1*/}
 
           
-          <button className={`${color} bg-[#1a0b2e]  w-[250px] h-[60px] rounded-[20px]  flex  items-center justify-around  px-[40px] hover:scale-125 ${hov}`}
+          <button className={`${color}${styleBtn}  ${hov}`}
             onClick={handleTwoPlayer}
             
           >

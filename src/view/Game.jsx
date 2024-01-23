@@ -14,18 +14,24 @@ const Game = () => {
 
   
 
-  const colorVariants = {
-    3: "grid-cols-3",
-    4: "grid-cols-4",
-    5: "grid-cols-5",
-    6: "grid-cols-6",
-    7: "grid-cols-7",
-    8: "grid-cols-8",
-    9: "grid-cols-9",
-    10: "grid-cols-10",
+  const colorVariantsAndTextsize = {
+    3: "grid-cols-3 gap-1 text-[100px] md:text-[200px]",
+    4: "grid-cols-4 gap-1 text-[80px] md:text-[160px]",
+    5: "grid-cols-5 gap-1 text-[60px] md:text-[140px]",
+    6: "grid-cols-6  text-[50px]  md:text-[120px]",
+    7: "grid-cols-7  text-[40px]  md:text-[100px]",
+    8: "grid-cols-8   text-[30px]  md:text-[80px]",
+    9: "grid-cols-9  text-[25px]  md:text-[80px]",
+    10: "grid-cols-10   text-[20px]  md:text-[70px]",
   };
+
+  
+ 
+
+  
+
   useEffect(()=>{
-   
+  
    console.log('=========================gameX',gameWinX);
    console.log('=========================gameO',gameWinO);
    console.log('data',data);
@@ -34,13 +40,13 @@ const Game = () => {
   return (
     <div className="bg-[url(public/bg-game.png)] w-full h-[100vh] flex flex-col items-center justify-center md:justify-start bg-center bg-cover ">
       <div
-        className={` grid ${colorVariants[times]} max-w-7xl w-[350px] h-[350px] md:w-[750px] md:h-[750px] mt-[40px]  gap-3`}
+        className={` grid ${colorVariantsAndTextsize[times]} max-w-7xl w-[370px] h-[370px] md:w-[750px] md:h-[750px] xl:w-[900px] xl:mt-[-20px] xl:h-[900px] mt-[10px] md:mt-[40px] `}
       >
         {data.map((e, i) => {
           return (
             <div key={i}>
-              <div onClick={() => Draw(i)} className="box">
-                <div className={`text ${e === "X" ? "textX" : "textO"}`}>
+              <div onClick={() => Draw(i)} className={`box rounded-[5px]  md:mt-[40px] `}>
+                <div className={`text ${e === "X" ? `textX ${colorVariantsAndTextsize[times]} ` : `textO ${colorVariantsAndTextsize[times]}`}`}>
                   {e}
                 </div>
               </div>
@@ -48,7 +54,7 @@ const Game = () => {
           );
         })}
       </div>
-      <div className="flex flex-col md:flex-row md:gap-[200px] lg:gap-[260px] ">
+      <div className="flex flex-col md:flex-row md:gap-[200px] lg:gap-[260px] mt-[20px] md:mt-[40px] ">
         <div className="player player-1 w-[180px] border-2 mt-[20px] flex justify-center items-center font-[500] text-[25px] h-[50px] md:h-[60px] bg-[#121213] rounded-[20px] text-white">
           Player 1 : X
         </div>
@@ -56,7 +62,7 @@ const Game = () => {
           Player 2 : O
         </div>
       </div>
-      <button onClick={handleBack} className="  absolute left-[100px] top-[100px] w-[80px] h-[80px] rounded-full bg-[#8d5ed8d3] hover:bg-[#9f90b6ee] ">
+      <button onClick={handleBack} className="  absolute top-[40px] left-[20px] w-[50px] h-[50px] lg:left-[30px] md:top-[20px] lg:top-[50px] lg:w-[70px] lg:h-[70px] rounded-full bg-[#8d5ed8d3] hover:bg-[#9f90b6ee] ">
         
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -23,6 +23,7 @@ export function GameProvider({ children }) {
   const [gameWinX , setGameWinX]=useState(false)
   const [gameWinO , setGameWinO]=useState(false)
   const [gametie , setgameTie]=useState(false)
+
   // draw รับ index จาก การกด ของ box
 
   const Draw = (index) => {
@@ -86,10 +87,12 @@ export function GameProvider({ children }) {
       //console.log("borad==t", borad[t]);
       // console.log("ttttt", t);
       let array1 = [];
+      
       t.map((call) => {
         //  console.log("============", borad[call]);
         // array = array.push(borad[call]);
         array1.push(borad[call]);
+
       });
       // console.log("araay1111", array1);
 
@@ -102,6 +105,9 @@ export function GameProvider({ children }) {
 
       if (everyconditionX) {
         setGameWinX(true)
+   
+       
+    
       // alert("XXXXXXXXXXXXXXXXXXXXXXXXX");
       }
       if (everyconditionO) {

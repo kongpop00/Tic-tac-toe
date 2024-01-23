@@ -33,7 +33,7 @@ const Showboard = () => {
   };
 
   return (
-    <div className="lg:w-[1000px] lg:h-[500px] grid grid-cols-4  gap-5 my-[50px] ">
+    <div className="   mt-[70px]  gap-2  grid grid-cols-3  md:p-[50px] lg:p-[20px]  md:grid-cols-4 md:gap-5   lg:mt-[20px]  ">
       {box.map((e, index) => {
         return (
           <button
@@ -41,11 +41,11 @@ const Showboard = () => {
             key={e.id}
             className={`box-1  border-[#26242ce8] border-[2px] text-[#6c667ce8]  bg-[#030303c4] justify-center relative items-center flex  rounded-[20px] hover:scale-125 ${
               selectedIndex === index ? ` relative z-10 bg-[#130f20ef] text-white  ${boxindex} ` : ""
-            }  `
+            } w-[110px] h-[110px] md:w-[160px] md:h-[160px] lg:w-[200px] lg:h-[210px] xl:w-[250px] xl:h-[250px] `
            
           } 
           >
-            <div className="absolute text-[40px] font-[500] rounded-lg  ">
+            <div className="absolute  text-[20px] md:text-[30px]  lg:text-[40px] font-[500] rounded-lg   ">
               {e.box}
             </div>
             <div className={` grid grid-cols-3 gap-3 w-[70%] `}>
@@ -53,7 +53,7 @@ const Showboard = () => {
                 return (
                   <div
                     key={i}
-                    className={`border-[2px] border-[#2e293588]  w-[60px] h-[60px] rounded-xl ${selectedIndex === index ? ` border-[#25252588] relative z-[-1] ` : ""} `}
+                    className={`hidden md:block  border-[2px] border-[#2e293588]  w-[30px] h-[30px] lg:w-[50px] lg:h-[50px] rounded-xl ${selectedIndex === index ? ` border-[#25252588] relative z-[-1] ` : ""} `}
                   ></div>
                 );
               })}
