@@ -62,7 +62,7 @@ const Game = () => {
           Player 2 : O
         </div>
       </div>
-      <button onClick={handleBack} className="  absolute top-[40px] left-[20px] w-[50px] h-[50px] lg:left-[30px] md:top-[20px] lg:top-[50px] lg:w-[70px] lg:h-[70px] rounded-full bg-[#8d5ed8d3] hover:bg-[#9f90b6ee] ">
+      <button onClick={handleBack} className="  absolute top-[20px] left-[20px] w-[50px] h-[50px] lg:left-[30px] md:top-[20px] lg:top-[50px] lg:w-[70px] lg:h-[70px] rounded-full bg-[#8d5ed8d3] hover:bg-[#9f90b6ee] ">
         
         <svg
           xmlns="http://www.w3.org/2000/svg"
