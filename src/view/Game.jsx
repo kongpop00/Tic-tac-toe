@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../component/game.css";
 import { useGameContext } from "../gameContext/GameContext";
 import { usefilterconditionWinContext } from "../gameContext/filterConditionWinGame";

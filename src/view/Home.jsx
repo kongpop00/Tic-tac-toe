@@ -1,54 +1,47 @@
-import React, { useEffect } from "react";
-
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Showboard from "../component/Showboard";
 import "../component/game.css";
 import { useGameContext } from "../gameContext/GameContext";
 import { usefilterconditionWinContext } from "../gameContext/filterConditionWinGame";
 import WarnBoard from "../component/WarnBoard";
-const Home = ({setTimes}) => {
- 
-  const color = 'boxindex'
-  const box = 'box2'
-  const hov = 'box3'
-  const styleBtn = ' bg-[#1a0b2e] w-[200px] h-[50px] mt-[20px] lg:w-[250px] lg:h-[65px]  rounded-[20px] flex  items-center justify-around px-[40px] lg:px-0 hover:scale-125'
-   const {setPlayer,setWarnBoard ,warnBoard}=useGameContext()
-  const {times}=usefilterconditionWinContext()
+const Home = ({ setTimes }) => {
+  const color = "boxindex";
+  const box = "box2";
+  const hov = "box3";
+  const styleBtn =
+    " bg-[#1a0b2e] w-[200px] h-[50px] mt-[20px] lg:w-[250px] lg:h-[65px]  rounded-[20px] flex  items-center justify-around px-[40px] lg:px-0 hover:scale-125";
+  const { setPlayer, setWarnBoard, warnBoard } = useGameContext();
+  const { times } = usefilterconditionWinContext();
   const navigate = useNavigate();
-    const handleTwoPlayer =()=>{
-      setPlayer("twoPlayer")
-      console.log('times',times);
-      setWarnBoard(true)
-      if(times > 0){
-        navigate('/game')
-      }
+  const handleTwoPlayer = () => {
+    setPlayer("twoPlayer");
+    console.log("times", times);
+    setWarnBoard(true);
+    if (times > 0) {
+      navigate("/game");
     }
-    const handleBot =()=>{
-      setPlayer("botPlayer")
-      setWarnBoard(true)
-      if(times > 0){
-        navigate('/game')
-      }
+  };
+  const handleBot = () => {
+    setPlayer("botPlayer");
+    setWarnBoard(true);
+    if (times > 0) {
+      navigate("/game");
     }
+  };
   return (
     <div className="bg-[url(public/bghome.png)] w-fuul h-[100%] bg-cover bg-center ">
       <div className=" w-full m-auto h-[100vh] lg:p-[50px] flex flex-col items-center">
-        <h1 className={`${box} text-[50px] sm:text-[70px] md:text-[80px] lg:text-[100px] font-[500] text-white w-[100%] text-center mt-[70px] lg:mt-[10px] `}>
+        <h1
+          className={`${box} text-[50px] sm:text-[70px] md:text-[80px] lg:text-[100px] font-[500] text-white w-[100%] text-center mt-[70px] lg:mt-[10px] `}
+        >
           Tic-Tac-Toe
         </h1>
-        <Showboard setTimes={setTimes}/>
-        {warnBoard &&
-         <WarnBoard/>
-     
-        }
-       
+        <Showboard setTimes={setTimes} />
+        {warnBoard && <WarnBoard />}
+
         {/*Button1*/}
         <div className=" mt-[20px] lg:mt-[30px] flex flex-col md:flex-row w-[100%] items-center justify-center gap-0 md:gap-10">
-            
-          <button className={`${color} ${styleBtn} ${hov}`}
-            onClick={handleBot}
-            
-          >
+          <button className={`${color} ${styleBtn} ${hov}`} onClick={handleBot}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -56,7 +49,6 @@ const Home = ({setTimes}) => {
               strokeWidth={1.5}
               stroke="currentColor"
               className="w-7 h-7 text-white"
-
             >
               <path
                 strokeLinecap="round"
@@ -80,13 +72,12 @@ const Home = ({setTimes}) => {
               />
             </svg>
           </button>
-         
+
           {/*Button1*/}
 
-          
-          <button className={`${color}${styleBtn}  ${hov}`}
+          <button
+            className={`${color}${styleBtn}  ${hov}`}
             onClick={handleTwoPlayer}
-            
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -118,11 +109,8 @@ const Home = ({setTimes}) => {
               />
             </svg>
           </button>
-         
         </div>
       </div>
-
-     
     </div>
   );
 };

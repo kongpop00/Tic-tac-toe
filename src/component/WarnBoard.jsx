@@ -2,7 +2,7 @@ import React from "react";
 import { useGameContext } from "../gameContext/GameContext";
 
 const WarnBoard = () => {
-  const { setWarnBoard, warnBoard } = useGameContext();
+  const { setWarnBoard } = useGameContext();
   return (
     <div className="bg-[#000000ad] absolute w-[100%] h-[100%] top-0 flex z-40">
       <div className="bg-[#281d4b5b] relative w-[70%] xl:w-[50%] h-[40%] m-auto  md:mt-[250px] flex justify-center items-center">

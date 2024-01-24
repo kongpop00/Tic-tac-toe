@@ -120,6 +120,13 @@
     0 0 100px rgb(114, 5, 238);
  }
 
+ .box4{
+    box-shadow: 
+    0 0 5px rgb(255, 255, 255),
+    0 0 10px rgb(255, 255, 255),
+    0 0 20px rgb(114, 5, 238),
+    0 0 100px rgb(114, 5, 238);
+ }
 @media screen and (max-width: 600px){
     .text{
         
