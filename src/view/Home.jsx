@@ -15,7 +15,7 @@ const Home = ({ setTimes }) => {
   const navigate = useNavigate();
   const handleTwoPlayer = () => {
     setPlayer("twoPlayer");
-    console.log("times", times);
+    //console.log("times", times);
     setWarnBoard(true);
     if (times > 0) {
       navigate("/game");
@@ -29,7 +29,7 @@ const Home = ({ setTimes }) => {
     }
   };
   return (
-    <div className="bg-[url(public/bghome.png)] w-fuul h-[100%] bg-cover bg-center ">
+    <div className="bg-[url(/bghome.png)] w-fuul h-[100%] bg-cover bg-center ">
       <div className=" w-full m-auto h-[100vh] lg:p-[50px] flex flex-col items-center">
         <h1
           className={`${box} text-[50px] sm:text-[70px] md:text-[80px] lg:text-[100px] font-[500] text-white w-[100%] text-center mt-[70px] lg:mt-[10px] `}

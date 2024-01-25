@@ -1,9 +1,4 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import {  createContext, useContext, useState } from "react";
 import { usefilterconditionWinContext } from "./filterConditionWinGame";
 import { useNavigate } from "react-router-dom";
 
@@ -14,29 +9,30 @@ export function useGameContext() {
 }
 
 export function GameProvider({ children }) {
-  const { conditionWin, times, condition ,setTimes } = usefilterconditionWinContext();
+  const { conditionWin, times, condition, setTimes } =
+    usefilterconditionWinContext();
   const [data, setData] = useState(Array(0).fill("")); // เก็บ box ไว้ป็น Array 9 ช่อง  ''
   const [current, setCurrent] = useState("X"); // ค่า แรก ที่กดลงไปใน box
   const [player, setPlayer] = useState("");
-  const [warnBoard,setWarnBoard]=useState(false)
-  const [gameWinX , setGameWinX]=useState(false)
-  const [gameWinO , setGameWinO]=useState(false)
-  const [gametie , setgameTie]=useState(false)
+  const [warnBoard, setWarnBoard] = useState(false);
+  const [gameWinX, setGameWinX] = useState(false);
+  const [gameWinO, setGameWinO] = useState(false);
+  const [gametie, setgameTie] = useState(false);
 
   // draw รับ index จาก การกด ของ box
 
   const Draw = (index) => {
     if (data[index] === "") {
-      console.log("box", index);
+      //  console.log("box", index);
       const borad = data;
       borad[index] = current; // ให้ index ที่กด ครั้งแรก เป็น X ["", "x "]
 
-      console.log("borad", borad);
+      // console.log("borad", borad);
       setData(borad);
-      console.log("data", data);
+      //  console.log("data", data);
 
       if (player == "twoPlayer") {
-        console.log("player", player);
+        //  console.log("player", player);
         if (current === "X") {
           setCurrent("O");
         } else {
@@ -45,15 +41,15 @@ export function GameProvider({ children }) {
         CheckWin(borad);
         CheckTie(borad);
       } else {
-        console.log("player", player);
+        //console.log("player", player);
 
         const random = RandomDraw(times);
-        console.log("random ", random);
+
         if (borad[random] == "") {
           borad.fill("O", random, random + 1);
         } else {
           const found = borad.indexOf("");
-          console.log("index of ", found);
+          //  console.log("index of ", found);
           borad.fill("O", found, found + 1);
         }
         CheckWin(borad);
@@ -63,8 +59,7 @@ export function GameProvider({ children }) {
   };
 
   const CheckWin = (borad) => {
-    console.log("borad", borad);
-
+    // console.log("borad", borad);
     condition();
     //console.log('conditionwin =========',conditionWin);
 
@@ -86,12 +81,11 @@ export function GameProvider({ children }) {
       //console.log("borad==t", borad[t]);
       // console.log("ttttt", t);
       let array1 = [];
-      
+
       t.map((call) => {
         //  console.log("============", borad[call]);
         // array = array.push(borad[call]);
         array1.push(borad[call]);
-
       });
       // console.log("araay1111", array1);
 
@@ -103,16 +97,10 @@ export function GameProvider({ children }) {
       const everyconditionO = array1.every(isAllO);
 
       if (everyconditionX) {
-        setGameWinX(true)
-   
-       
-    
-      // alert("XXXXXXXXXXXXXXXXXXXXXXXXX");
+        setGameWinX(true);
       }
       if (everyconditionO) {
-        setGameWinO(true)
-      
-      //  alert("OOOOOOOOOOOOOOOOOOOO");
+        setGameWinO(true);
       }
     }
   };
@@ -124,10 +112,7 @@ export function GameProvider({ children }) {
       }
     });
     if (count >= times ** 2) {
-   
-     // alert("tie========================");
-      console.log("=====================");
-      setgameTie(true)
+      setgameTie(true);
     }
   };
 
@@ -136,18 +121,18 @@ export function GameProvider({ children }) {
     return Math.floor(Math.random() * time);
   };
   const navigate = useNavigate();
-  const handleBack = ()=>{
-    navigate('/')
+  const handleBack = () => {
+    navigate("/");
     window.location.reload();
-  }
-  
- const handlePlayagain =()=>{
-     setData(Array(times**2).fill(""))
-     setCurrent("X")
-    setgameTie(false)
-     setGameWinO(false)
-     setGameWinX(false)
- }
+  };
+
+  const handlePlayagain = () => {
+    setData(Array(times ** 2).fill(""));
+    setCurrent("X");
+    setgameTie(false);
+    setGameWinO(false);
+    setGameWinX(false);
+  };
   return (
     <GameContext.Provider
       value={{
@@ -160,9 +145,9 @@ export function GameProvider({ children }) {
         gameWinO,
         gameWinX,
         handleBack,
-        handlePlayagain, 
+        handlePlayagain,
         player,
-        gametie
+        gametie,
       }}
     >
       {children}

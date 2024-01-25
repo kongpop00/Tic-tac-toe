@@ -1,18 +1,13 @@
-import React, { useEffect } from "react";
+
 import "../component/game.css";
 import { useGameContext } from "../gameContext/GameContext";
 import { usefilterconditionWinContext } from "../gameContext/filterConditionWinGame";
 import Showwin from "../component/Showwin";
 
-
 const Game = () => {
-
-  
-  const { Draw, data ,gameWinX , gameWinO ,handleBack ,gametie} = useGameContext();
+  const { Draw, data, gameWinX, gameWinO, handleBack, gametie } =
+    useGameContext();
   const { times } = usefilterconditionWinContext();
-  
-
-  
 
   const colorVariantsAndTextsize = {
     3: "grid-cols-3 gap-1 text-[100px] md:text-[200px]",
@@ -25,28 +20,25 @@ const Game = () => {
     10: "grid-cols-10   text-[20px]  md:text-[70px]",
   };
 
-  
- 
-
-  
-
-  useEffect(()=>{
-  
-   console.log('=========================gameX',gameWinX);
-   console.log('=========================gameO',gameWinO);
-   console.log('data',data);
-  
- },[gameWinX,gameWinO,data])
   return (
-    <div className="bg-[url(public/bg-game.png)] w-full h-[100vh] flex flex-col items-center justify-center md:justify-start bg-center bg-cover ">
+    <div className="bg-[url(/bg-game.png)] w-full h-[100vh] flex flex-col items-center justify-center md:justify-start bg-center bg-cover ">
       <div
         className={` grid ${colorVariantsAndTextsize[times]} max-w-7xl w-[370px] h-[370px] md:w-[750px] md:h-[750px] xl:w-[900px] xl:mt-[-20px] xl:h-[900px] mt-[10px] md:mt-[40px] `}
       >
         {data.map((e, i) => {
           return (
             <div key={i}>
-              <div onClick={() => Draw(i)} className={`box rounded-[5px] mt-[20px] md:mt-[40px] `}>
-                <div className={`text ${e === "X" ? `textX ${colorVariantsAndTextsize[times]} ` : `textO ${colorVariantsAndTextsize[times]}`}`}>
+              <div
+                onClick={() => Draw(i)}
+                className={`box rounded-[5px] mt-[20px] md:mt-[40px] `}
+              >
+                <div
+                  className={`text ${
+                    e === "X"
+                      ? `textX ${colorVariantsAndTextsize[times]} `
+                      : `textO ${colorVariantsAndTextsize[times]}`
+                  }`}
+                >
                   {e}
                 </div>
               </div>
@@ -62,8 +54,10 @@ const Game = () => {
           Player 2 : O
         </div>
       </div>
-      <button onClick={handleBack} className="  absolute top-[20px] left-[20px] w-[50px] h-[50px] lg:left-[30px] md:top-[20px] lg:top-[50px] lg:w-[70px] lg:h-[70px] rounded-full bg-[#8d5ed8d3] hover:bg-[#9f90b6ee] ">
-        
+      <button
+        onClick={handleBack}
+        className="  absolute top-[20px] left-[20px] w-[50px] h-[50px] lg:left-[30px] md:top-[20px] lg:top-[50px] lg:w-[70px] lg:h-[70px] rounded-full bg-[#8d5ed8d3] hover:bg-[#9f90b6ee] "
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -79,17 +73,10 @@ const Game = () => {
           />
         </svg>
       </button>
-       
-     {gameWinO &&
-      <Showwin/>
-     }
-     {gameWinX && 
-     <Showwin/>
-    }
-   { gametie &&
-     <Showwin/>
-   }
-         
+
+      {gameWinO && <Showwin />}
+      {gameWinX && <Showwin />}
+      {gametie && <Showwin />}
     </div>
   );
 };

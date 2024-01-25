@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import { useGameContext } from "../gameContext/GameContext";
 import "./game.css";
 const Showwin = () => {
@@ -46,9 +46,7 @@ const Showwin = () => {
   const stylebutton =
     "  text-[25px] p-[5px] w-[100%]   md:w-[70%] lg:w-[60%] bg-[#2b194d67] rounded-[14px] border-[1px]";
 
-  useEffect(() => {
-    console.log("hellow ============game win gametie", gametie);
-  }, []);
+  
   return (
     <div className= " bg-[#000000d2] absolute w-[100%] h-[100%] top-0 flex z-40 font-semibold">
       <div className="box4 bg-[#120c25cb] relative w-[80%] h-[60%] lg:h-[50%] md:mt-[150px] lg:mt-[150px] xl:w-[50%] xl:h-[60%] m-auto flex   justify-center ">
