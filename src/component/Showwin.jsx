@@ -5,7 +5,7 @@ const Showwin = () => {
   const { gameWinX, gameWinO, player, handleBack, handlePlayagain, gametie } =
     useGameContext();
 
-  //const [textwin, setTextwin] = useState("");
+
   let gamestie = "";
   let textwin = "";
   let cruurentwin = ""

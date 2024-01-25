@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-
+import { createContext, useContext, useEffect, useState } from "react";
 
 const filterconditionWin = createContext();
 
@@ -15,24 +9,22 @@ export function usefilterconditionWinContext() {
 export function FilterconditionWinProvider({ children }) {
   const [times, setTimes] = useState(0);
 
-  const [dataindex, setDataIndex] = useState(Array(times**2).fill(0));
+  const [dataindex, setDataIndex] = useState(Array(times ** 2).fill(0));
   const [conditionWin, setConditionWin] = useState([]);
-  const [checkcosRight ,setCheckCosRight]=useState([])
-  const [checkcosLefte ,setCheckCosLefte]=useState([])
- 
+  const [checkcosRight, setCheckCosRight] = useState([]);
+  const [checkcosLefte, setCheckCosLefte] = useState([]);
 
-  
   //สร้างเงื่อนไขในการชนะ แล้วนำไปเก็บไว้ใน Araay
 
   //test นำเลข ไปใส่ใน data
   for (let i = 0; i < dataindex.length; i++) {
-    dataindex[i] = i
+    dataindex[i] = i;
   }
   // console.log("data", data);
   // วo loop ตาม จำนวน รอบ ตัวคูณ -1
 
   const calculate = () => {
-    for (let j = 0; j< times; j++) {
+    for (let j = 0; j < times; j++) {
       Row();
       column(j);
     }
@@ -44,14 +36,12 @@ export function FilterconditionWinProvider({ children }) {
     // o-3 , 3-6 , 6-9
     firtsRow = Number(lengthRow.slice(-1)) + 1; // 2+1==3WWW
     endRow += times; //3+3
-   
- 
-    setConditionWin(Array.from(conditionWin.push(lengthRow)));
 
+    setConditionWin(Array.from(conditionWin.push(lengthRow)));
   };
 
   const column = (j) => {
-    let count =j;
+    let count = j;
     let firstArray = [count]; // 0 ,1 ,2
     let endArray = times * (times - 1) + j; // 6 ,7,8
 
@@ -86,23 +76,17 @@ export function FilterconditionWinProvider({ children }) {
     }
     setConditionWin(Array.from(conditionWin.push(checkcosLefte)));
   };
- 
-   const condition=()=>{
-    calculate();
-    cosRight();
-    cosLfte()
-   }
-  
-  useEffect(() => {
 
-   //
-    //console.log('data',dataindex);
+  const condition = () => {
     calculate();
     cosRight();
-    cosLfte()
-    
-    //console.log('time',times);
-   console.log("condirion", conditionWin);
+    cosLfte();
+  };
+
+  useEffect(() => {
+    calculate();
+    cosRight();
+    cosLfte();
   }, [times]);
 
   return (
@@ -112,7 +96,7 @@ export function FilterconditionWinProvider({ children }) {
         times,
         setDataIndex,
         conditionWin,
-        condition
+        condition,
       }}
     >
       {children}
