@@ -45,7 +45,7 @@ const Game = () => {
         {data.map((e, i) => {
           return (
             <div key={i}>
-              <div onClick={() => Draw(i)} className={`box rounded-[5px]  md:mt-[40px] `}>
+              <div onClick={() => Draw(i)} className={`box rounded-[5px] mt-[20px] md:mt-[40px] `}>
                 <div className={`text ${e === "X" ? `textX ${colorVariantsAndTextsize[times]} ` : `textO ${colorVariantsAndTextsize[times]}`}`}>
                   {e}
                 </div>
@@ -54,11 +54,11 @@ const Game = () => {
           );
         })}
       </div>
-      <div className="flex flex-col md:flex-row md:gap-[200px] lg:gap-[260px] mt-[20px] md:mt-[40px] ">
-        <div className="player player-1 w-[180px] border-2 mt-[20px] flex justify-center items-center font-[500] text-[25px] h-[50px] md:h-[60px] bg-[#121213] rounded-[20px] text-white">
+      <div className="flex flex-col md:flex-row md:gap-[200px] lg:gap-[260px] mt-[25px] md:mt-[40px] ">
+        <div className="player player-1   w-[180px] border-2 mt-[20px] flex justify-center items-center font-[500] text-[20px] md:text-[25] h-[50px] md:h-[60px] bg-[#121213] rounded-[20px] text-white">
           Player 1 : X
         </div>
-        <div className="player playper-2 w-[180px] border-2 mt-[20px] flex justify-center items-center font-[500] text-[25px] h-[50px] md:h-[60px] bg-[#121213] rounded-[20px] text-white">
+        <div className="player playper-2 w-[180px] border-2 mt-[20px] flex justify-center items-center font-[500] md:text-[25px] text-[20px] h-[50px] md:h-[60px] bg-[#121213] rounded-[20px] text-white">
           Player 2 : O
         </div>
       </div>
